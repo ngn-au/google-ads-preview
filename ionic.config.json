@@ -1,0 +1,7 @@
+{
+  "name": "google-ads-preview",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

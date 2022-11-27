@@ -1,0 +1,79 @@
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: xlr8
+  labels:
+    name: xlr8
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xlr8-gap
+  namespace: xlr8
+  labels:
+    app: xlr8-gap
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.xlr8-gap.service: xlr8-gap
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: xlr8-gap
+        io.xlr8-gap.service: xlr8-gap
+    spec:
+      containers:
+        - name: xlr8-gap-web
+          image: jadsy2107/xlr8-gap-web
+          imagePullPolicy: Always 
+          ports:
+          - containerPort: 80
+          # resources:
+          #   requests:
+          #     memory: "64Mi"
+          #     cpu: "250m"
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+        - name: xlr8-gap-api
+          image: jadsy2107/xlr8-gap-api
+          ports:
+          - containerPort: 8081
+          # resources:
+          #   requests:
+          #     memory: "64Mi"
+          #     cpu: "250m"
+          #   limits:
+          #     memory: "128Mi"
+          #     cpu: "500m"
+          imagePullPolicy: Always 
+          volumeMounts:
+            - name: xlr8-gap-env
+              readOnly: true
+              mountPath: "/usr/src/app/.env"
+              subPath: ".env"
+      restartPolicy: Always
+      volumes:
+        - name: xlr8-gap-env
+          configMap:
+            name: xlr8-gap-env
+            defaultMode: 0600
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.xlr8-gap.service: xlr8-gap
+  name: xlr8-gap-web
+  namespace: xlr8
+spec:
+  ports:
+    - name: "web"
+      port: 80
+      targetPort: 80
+  type: NodePort
+  selector:
+    io.xlr8-gap.service: xlr8-gap

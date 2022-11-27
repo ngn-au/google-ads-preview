@@ -1,0 +1,75 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-list-header class="ion-margin-bottom">Google Ads Preview</ion-list-header>
+
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+              
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate>
+          <ion-item lines="full">
+            <ion-label position="floating">Domain</ion-label>
+            <ion-input formControlName="Domain" type="text" required></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">First Name</ion-label>
+            <ion-input formControlName="First_Name" type="text" required></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Last Name</ion-label>
+            <ion-input formControlName="Last_Name" type="text" required></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Agency Name</ion-label>
+            <ion-input formControlName="Agency_Name" type="text" required></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Suburb</ion-label>
+            <ion-input formControlName="Suburb" type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Mobile</ion-label>
+            <ion-input formControlName="Mobile" type="text"></ion-input>
+          </ion-item>
+          <ion-item lines="full">
+            <ion-label position="floating">Search Term</ion-label>
+            <ion-input formControlName="Search_Term" type="text"></ion-input>
+          </ion-item>
+          <ion-row class="ion-padding">
+            <ion-col>
+              <ion-button type="submit" color="success" [disabled]="!ionicForm.valid" expand="block">Generate</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+        <ion-modal trigger="open-modal" class="auto-height" (willDismiss)="onWillDismiss($event)">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-button (click)="cancel()">Cancel</ion-button>
+                </ion-buttons>
+                <ion-title class="ion-text-center">{{Image$?.value?.First_Name}} {{Image$?.value?.Last_Name}} - {{Image$?.value?.Agency_Name}}</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="confirm()" [strong]="true">Post</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <div class="ion-padding" class="inner-content">
+              <img [src]="imgSrc" style="margin: 0 auto;display: block;" />
+            </div>
+
+          </ng-template>
+        </ion-modal>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content">
+    </ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,102 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Mock-up Generator</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Mock-up Generator</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="row" style="margin-top: 20px;justify-content: center;display: flex;">
+    <div id="mobile-preview-frame" class="col-sm-12" style="width:470px;">
+      <div class="mobile-preview-frame" style="height:560px;">
+<div class="mobile-screen">
+
+<div class="row glogo">
+  <img src="/assets/google-logo.png" alt="Google">
+</div>
+
+<div class="row" style="margin-top:5px; padding:2px;">
+  <div class="col-sm-12 mobile-cards">
+    <div class="inner-addon left-addon right-addon">
+      <input id="mobile-search-input" [value]="Image?.Search_Term +' '+ (Image?.Suburb | lowercase)" class="form-control input" type="text">
+      <i class="k-icon-right k-icon glyphicon glyphicon-search"></i>
+    </div>
+
+    <div class="mob-captions" style="color:#757575; padding: 10px 0 10px 20px;">
+      <span style="color:#1967d2">ALL</span> <span style="margin-left: 20px;">IMAGES</span>
+      <span style="margin-left: 20px;">VIDEOS</span> <span style="margin-left: 20px;">NEWS</span> <span style="margin-left: 20px;">BOOKS</span>
+    </div>
+  </div>
+</div>
+        <div class="row" style="padding:2px;">
+          <div class="col-sm-12 ad mobile-cards" style="background-color: white;">
+            <div style="padding-left: 10px; padding-right: 10px;">
+              <div class="urlline-mobile">
+                <div class="row">
+                  <div class="col-xs-10 ng-scope" style="overflow: hidden; text-overflow: ellipsis;padding-left: 0;
+    margin-bottom: 8px;" ng-if="getCompleteDisplayURL(ad)">
+                    <strong class="adtag-mobile">Ad&nbsp;·</strong>&nbsp;<span class="displayurl-mobile ng-binding">{{Image?.Domain}}/real-estate/{{ (Image?.Suburb | lowercase)}}</span>
+                  </div>
+                  <div class="col-xs-2"><i style="color: #bbb; padding:0px 5px 0px 5px;" class="fa fa-info-circle"></i></div>
+                </div>
+              </div>
+              <div>
+                <h3 class="headline">
+                  <a href="https://{{Image?.Domain}}" rel="nofollow">
+                  </a>
+                </h3>
+              </div>
+              <div>
+                <h3 class="headline">
+                  <a href="https://{{Image?.Domain}}" rel="nofollow">
+                    <span ng-repeat="headline in getHeadlinesToDisplay(ad)" class="ng-binding ng-scope">
+                      Real Estate Agents {{Image?.Suburb}}
+                    </span>
+                    <span ng-repeat="headline in getHeadlinesToDisplay(ad)" class="ng-binding ng-scope">
+                      <span ng-if="!$first" class="ng-scope">|</span>
+                      Call {{Image?.First_Name}} {{Image?.Last_Name}} Today
+                    </span>
+                    <span ng-repeat="headline in getHeadlinesToDisplay(ad)" class="ng-binding ng-scope">
+                      <span ng-if="!$first" class="ng-scope">|</span>
+                      Local Market Expert
+                    </span>
+                  </a>
+                </h3>
+              </div>
+              <div>
+                <span ng-repeat=" description in getDescriptionsToDisplay(ad)" class="description ng-binding ng-scope">
+                  Thinking Of Selling Real Estate In {{Image?.Suburb}}? Call {{Image?.First_Name}} {{Image?.Last_Name}} From {{Image?.Agency_Name}} For A Market Appraisal.
+                </span>
+                <span ng-repeat=" description in getDescriptionsToDisplay(ad)" class="description ng-binding ng-scope">
+                  Highly Recommended. Friendly Advice.
+                </span>
+              </div>
+              <div ng-if="ad.features.showSitelinkExt &amp;&amp; hasSitelinks(ad)" class="sitelink-ext-container-mobile mobile ng-scope">
+                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 1)"><a href="#" class="ng-binding">Sales &amp; Reviews On REA</a></div>
+                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 2)"><a href="#" class="ng-binding">Contact {{Image?.First_Name}} On REA</a></div>
+              </div>
+              <div ng-if="ad.features.showCallExt &amp;&amp; ad.phone &amp;&amp; !(ad.features.showLocationExt &amp;&amp; hasNonEmptyAddresses(ad))" class="ng-scope">
+                <hr style=" margin-bottom: 7px; margin-top: 7px; margin-left:-10px; margin-right:-10px;height: 1px;">
+                <i style="padding:0px 5px 0px 5px;" class="fa fa-phone"></i> <span class="mobile-call-ext ng-binding">Call {{Image?.Mobile}}</span>
+              </div>
+              <div ng-if="ad.features.showMessageExt &amp;&amp; ad.messageExtText" class="ng-scope">
+                <hr style=" margin-bottom: 7px; margin-top: 7px; margin-left: -15px; margin-right: -15px;height: 1px;">
+                <i style="padding:0px 5px 0px 5px;" class="fa-regular fa-comment"></i> <span class="mobile-call-ext ng-binding">Book A Free Market Appraisal</span>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+    </div>
+  </div>
+
+</ion-content>
