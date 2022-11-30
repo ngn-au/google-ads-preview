@@ -45,14 +45,21 @@ const sendPhoto = async (req: Request, res: Response, next: NextFunction) => {
 const getPhoto = async (req: Request, res: Response, next: NextFunction) => {
   const uuid = req.params.uuid;
   var base64Img = require('base64-img');
-  var imgData = base64Img.base64Sync("data/"+uuid+".png");
-  var base64Data = imgData.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
-  var img = Buffer.from(base64Data, 'base64');
-  res.writeHead(200, {
-  'Content-Type': 'image/png',
-  'Content-Length': img.length
-  });
-  res.end(img);
+  try {
+    var imgData = base64Img.base64Sync("data/"+uuid+".png");
+    var base64Data = imgData.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
+    var img = Buffer.from(base64Data, 'base64');
+    res.writeHead(200, {
+    'Content-Type': 'image/png',
+    'Content-Length': img.length
+    });
+    res.end(img);
+  } catch(err) {
+    console.log(err);
+    return res.status(200).json({
+        result: false
+    });
+  }
 };
 
 export default { sendPhoto, getPhoto };

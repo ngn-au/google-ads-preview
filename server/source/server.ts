@@ -4,21 +4,25 @@ import express, { Express } from 'express';
 import morgan from 'morgan';
 import routes from './routes/telegram';
 import cors from 'cors';
-
+import bodyParser from 'body-parser'
 const router: Express = express();
 
 /** Logging */
 router.use(morgan('dev'));
 
 /** Parse the request */
-router.use(express.urlencoded({ extended: false }));
+// router.use(express.urlencoded({ extended: false }));
+router.use(express.json({limit: '50mb'}));
+router.use(bodyParser.json({ limit: "200mb" }));
+router.use(bodyParser.urlencoded({ limit: "200mb",  extended: true, parameterLimit: 1000000 }));
+
 /** Takes care of JSON data */
 const allowedOrigins = ['http://localhost', 'http://localhost:8100', 'https://localhost:8100'];
 const options: cors.CorsOptions = {
   origin: allowedOrigins
 };
 router.use(cors(options));
-router.use(express.json());
+
 
 /** RULES OF OUR API */
 router.use((req, res, next) => {
