@@ -80,8 +80,8 @@
                 </span>
               </div>
               <div ng-if="ad.features.showSitelinkExt &amp;&amp; hasSitelinks(ad)" class="sitelink-ext-container-mobile mobile ng-scope">
-                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 1)"><a href="#" class="ng-binding">Sales &amp; Reviews On REA</a></div>
-                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 2)"><a href="#" class="ng-binding">Contact {{Image?.First_Name}} On REA</a></div>
+                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 1)"><a href="#" class="ng-binding">{{Image?.Button_A}}</a></div>
+                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 2)"><a href="#" class="ng-binding">Contact {{Image?.Button_B}} On REA</a></div>
               </div>
               <div ng-if="ad.features.showCallExt &amp;&amp; ad.phone &amp;&amp; !(ad.features.showLocationExt &amp;&amp; hasNonEmptyAddresses(ad))" class="ng-scope">
                 <hr style=" margin-bottom: 7px; margin-top: 7px; margin-left:-10px; margin-right:-10px;height: 1px;">

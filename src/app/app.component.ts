@@ -43,6 +43,8 @@ export class AppComponent {
       Suburb: ['', [Validators.required, Validators.minLength(2)]],
       Mobile: ['', [Validators.required, Validators.minLength(2)]],
       Search_Term: ['real estate agents', [Validators.required, Validators.minLength(2)]],
+      Button_A: ['Sales & Reviews On REA', [Validators.required, Validators.minLength(2)]],
+      Button_B: ['Contact On REA', [Validators.required, Validators.minLength(2)]],
    })
   }
 

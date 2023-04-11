@@ -9,6 +9,8 @@ export interface Image {
   Suburb: string;
   Mobile: string;
   Search_Term: string;
+  Button_A: string;
+  Button_B: string;
 } 
 
 @Injectable({
@@ -24,7 +26,9 @@ export class DashboardService {
     Agency_Name: '',
     Suburb: '',
     Mobile: '',
-    Search_Term: 'real estate agents'
+    Search_Term: 'real estate agents',
+    Button_A: 'real estate agents',
+    Button_B: 'real estate agents'
   });
 
   public get Image$(): BehaviorSubject<any> {
