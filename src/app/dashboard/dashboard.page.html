@@ -16,7 +16,7 @@
 
   <div class="row" style="margin-top: 20px;justify-content: center;display: flex;">
     <div id="mobile-preview-frame" class="col-sm-12" style="width:470px;">
-      <div class="mobile-preview-frame" style="height:570px;">
+      <div class="mobile-preview-frame" style="height:580px;">
 <div class="mobile-screen">
 
 <div class="row glogo">
@@ -80,15 +80,14 @@
                   Thinking Of Selling Real Estate In {{Image?.Suburb}}? Call {{Image?.First_Name}} {{Image?.Last_Name}} From {{Image?.Agency_Name}} For A Market Appraisal.                
                   Highly Recommended. Friendly Advice.
                 </div>
-                <div style="float:left;width:20%;margin-top:-8px;margin-bottom:8px;">
+                <div style="float:left;width:20%;margin-bottom:8px;">
                   <img style="border-radius:8px;" [src]="UploadedImage" />
                 </div>
               </div>
 
-
-              <div>
-                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 1)"><a href="#" class="ng-binding">{{Image?.Button_A ? Image?.Button_A : 'Sales & Reviews On REA' }}</a></div>
-                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 2)"><a href="#" class="ng-binding">{{Image?.Button_B ? Image?.Button_B : 'Contact ' + Image?.First_Name + ' On REA' }} </a></div>
+              <div class="sitelink-ext-container-mobile mobile ng-scope">
+                  <div class="sitelink-ext-item ng-scope"><a href="#" class="ng-binding">{{Image?.Button_A ? Image?.Button_A : 'Sales & Reviews On REA' }}</a></div>
+                  <div class="sitelink-ext-item ng-scope"><a href="#" class="ng-binding">{{Image?.Button_B ? Image?.Button_B : 'Contact ' + Image?.First_Name + ' On REA' }} </a></div>
               </div>
               <div>
               <hr style=" margin-bottom: 7px; margin-top: 7px; margin-left:-10px; margin-right:-10px;height: 1px;">
