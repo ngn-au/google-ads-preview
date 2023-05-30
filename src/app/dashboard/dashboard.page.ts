@@ -10,6 +10,7 @@ import { DashboardService, Image } from '../services/dashboard.service';
 export class DashboardPage implements OnInit {
   public dashboard!: string;
   public Image?: Image;
+  public UploadedImage?: string;
   public appPages?: Array<any>;
   constructor(private dashboardService: DashboardService, private activatedRoute: ActivatedRoute) { }
 
@@ -21,6 +22,10 @@ export class DashboardPage implements OnInit {
 
     this.dashboardService.Image$.subscribe(res=>{
       this.Image = res;
+    })
+
+    this.dashboardService.UploadedImage$.subscribe(res=>{
+      this.UploadedImage = res;
     })
   }
 

@@ -50,6 +50,9 @@
             <ion-label position="floating">Button B</ion-label>
             <ion-input formControlName="Button_B" type="text"></ion-input>
           </ion-item>
+          <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone-label>Upload image</ngx-dropzone-label>
+          </ngx-dropzone>
           <ion-row class="ion-padding">
             <ion-col>
               <ion-button type="submit" color="success" [disabled]="!ionicForm.valid" expand="block">Generate</ion-button>

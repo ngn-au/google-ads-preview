@@ -16,7 +16,7 @@
 
   <div class="row" style="margin-top: 20px;justify-content: center;display: flex;">
     <div id="mobile-preview-frame" class="col-sm-12" style="width:470px;">
-      <div class="mobile-preview-frame" style="height:560px;">
+      <div class="mobile-preview-frame" style="height:570px;">
 <div class="mobile-screen">
 
 <div class="row glogo">
@@ -71,20 +71,27 @@
                   </a>
                 </h3>
               </div>
-              <div>
-                <span ng-repeat=" description in getDescriptionsToDisplay(ad)" class="description ng-binding ng-scope">
-                  Thinking Of Selling Real Estate In {{Image?.Suburb}}? Call {{Image?.First_Name}} {{Image?.Last_Name}} From {{Image?.Agency_Name}} For A Market Appraisal.
-                </span>
-                <span ng-repeat=" description in getDescriptionsToDisplay(ad)" class="description ng-binding ng-scope">
+              <div *ngIf="!UploadedImage" style="padding-bottom:8px;float:left;">
+                  Thinking Of Selling Real Estate In {{Image?.Suburb}}? Call {{Image?.First_Name}} {{Image?.Last_Name}} From {{Image?.Agency_Name}} For A Market Appraisal.                
                   Highly Recommended. Friendly Advice.
-                </span>
               </div>
-              <div ng-if="ad.features.showSitelinkExt &amp;&amp; hasSitelinks(ad)" class="sitelink-ext-container-mobile mobile ng-scope">
-                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 1)"><a href="#" class="ng-binding">{{Image?.Button_A}}</a></div>
-                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 2)"><a href="#" class="ng-binding">Contact {{Image?.Button_B}} On REA</a></div>
+              <div *ngIf="UploadedImage" style="padding-bottom:8px;float:left;">
+                <div style="float:left;width:80%">
+                  Thinking Of Selling Real Estate In {{Image?.Suburb}}? Call {{Image?.First_Name}} {{Image?.Last_Name}} From {{Image?.Agency_Name}} For A Market Appraisal.                
+                  Highly Recommended. Friendly Advice.
+                </div>
+                <div style="float:left;width:20%;margin-top:-8px;margin-bottom:8px;">
+                  <img style="border-radius:8px;" [src]="UploadedImage" />
+                </div>
               </div>
-              <div ng-if="ad.features.showCallExt &amp;&amp; ad.phone &amp;&amp; !(ad.features.showLocationExt &amp;&amp; hasNonEmptyAddresses(ad))" class="ng-scope">
-                <hr style=" margin-bottom: 7px; margin-top: 7px; margin-left:-10px; margin-right:-10px;height: 1px;">
+
+
+              <div>
+                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 1)"><a href="#" class="ng-binding">{{Image?.Button_A ? Image?.Button_A : 'Sales & Reviews On REA' }}</a></div>
+                  <div class="sitelink-ext-item ng-scope" ng-if="hasSitelink(ad, 2)"><a href="#" class="ng-binding">{{Image?.Button_B ? Image?.Button_B : 'Contact ' + Image?.First_Name + ' On REA' }} </a></div>
+              </div>
+              <div>
+              <hr style=" margin-bottom: 7px; margin-top: 7px; margin-left:-10px; margin-right:-10px;height: 1px;">
                 <i style="padding:0px 5px 0px 5px;" class="fa fa-phone"></i> <span class="mobile-call-ext ng-binding">Call {{Image?.Mobile}}</span>
               </div>
               <div ng-if="ad.features.showMessageExt &amp;&amp; ad.messageExtText" class="ng-scope">

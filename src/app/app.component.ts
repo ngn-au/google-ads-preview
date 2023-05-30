@@ -15,9 +15,10 @@ import { BehaviorSubject } from 'rxjs';
 export class AppComponent {
   delay = (delay: number) => new Promise(resolve => setTimeout(resolve, delay));
   Image$?: BehaviorSubject<Image> = new BehaviorSubject(<Image>{});
+  UploadedImage: any;
   ionicForm!: FormGroup;
   imgSrc?: string;
-  
+  files: File[] = [];
   @ViewChild(IonModal) modal?: IonModal;
 
   public appPages: Array<any> = [
@@ -43,8 +44,8 @@ export class AppComponent {
       Suburb: ['', [Validators.required, Validators.minLength(2)]],
       Mobile: ['', [Validators.required, Validators.minLength(2)]],
       Search_Term: ['real estate agents', [Validators.required, Validators.minLength(2)]],
-      Button_A: ['Sales & Reviews On REA', [Validators.required, Validators.minLength(2)]],
-      Button_B: ['Contact On REA', [Validators.required, Validators.minLength(2)]],
+      Button_A: ['', [Validators.minLength(2)]],
+      Button_B: ['', [Validators.minLength(2)]],
    })
   }
 
@@ -100,6 +101,20 @@ export class AppComponent {
 
   async postToChat() {
     
+  }
+
+  onRemove(f: any) {
+
+  }
+
+  onSelect(event: any) {
+    console.log(event);
+    this.files.push(...event.addedFiles);
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.dashboardService.UploadedImage$.next(reader.result as string);
+    }
+    reader.readAsDataURL(this.files[0])
   }
 
 }

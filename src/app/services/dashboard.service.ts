@@ -19,6 +19,7 @@ export interface Image {
 
 export class DashboardService {
   private _appPages$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+  private _UploadedImage$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private _Image$: BehaviorSubject<any> = new BehaviorSubject<Image>({
     Domain: '',
     First_Name: '',
@@ -27,8 +28,8 @@ export class DashboardService {
     Suburb: '',
     Mobile: '',
     Search_Term: 'real estate agents',
-    Button_A: 'real estate agents',
-    Button_B: 'real estate agents'
+    Button_A: '',
+    Button_B: ''
   });
 
   public get Image$(): BehaviorSubject<any> {
@@ -36,6 +37,13 @@ export class DashboardService {
   }
   public set Image$(value: BehaviorSubject<any>) {
     this._Image$ = value;
+  }
+
+  public get UploadedImage$(): BehaviorSubject<any> {
+    return this._UploadedImage$;
+  }
+  public set UploadedImage$(value: BehaviorSubject<any>) {
+    this._UploadedImage$ = value;
   }
 
   public get appPages$(): BehaviorSubject<any> {
