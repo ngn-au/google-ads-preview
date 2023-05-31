@@ -54,7 +54,7 @@
                   </a>
                 </h3>
               </div>
-              <div>
+              <div style="padding-bottom:4px;">
                 <h3 class="headline">
                   <a href="https://{{Image?.Domain}}" rel="nofollow">
                     <span ng-repeat="headline in getHeadlinesToDisplay(ad)" class="ng-binding ng-scope">
@@ -71,16 +71,16 @@
                   </a>
                 </h3>
               </div>
-              <div *ngIf="!UploadedImage" style="padding-bottom:8px;float:left;">
+              <div *ngIf="!UploadedImage" style="padding-bottom:4px;float:left;">
                   Thinking Of Selling Real Estate In {{Image?.Suburb}}? Call {{Image?.First_Name}} {{Image?.Last_Name}} From {{Image?.Agency_Name}} For A Market Appraisal.                
                   Highly Recommended. Friendly Advice.
               </div>
-              <div *ngIf="UploadedImage" style="padding-bottom:8px;float:left;">
+              <div *ngIf="UploadedImage" style="padding-bottom:4px;float:left;">
                 <div style="float:left;width:80%">
                   Thinking Of Selling Real Estate In {{Image?.Suburb}}? Call {{Image?.First_Name}} {{Image?.Last_Name}} From {{Image?.Agency_Name}} For A Market Appraisal.                
                   Highly Recommended. Friendly Advice.
                 </div>
-                <div style="float:left;width:20%;margin-bottom:8px;">
+                <div style="float:left;width:20%;margin-bottom:4px;">
                   <img style="border-radius:8px;" [src]="UploadedImage" />
                 </div>
               </div>

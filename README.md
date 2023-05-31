@@ -36,3 +36,7 @@ K8s Config Map
 
 The Web App Dockerfile creates a nginx:mainline-alpine and copies www directory to host, and importantly, copies nginx configuration which proxies any /api requests to localhost:8081 (API Server)
 
+
+# BUILD 
+
+`docker buildx build --platform linux/amd64 -t jadsy2107/xlr8-gap-web:latest --push .`
